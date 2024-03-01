@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Transactions {
+  id     Int      @id @default(autoincrement())
+  date   DateTime
+  name   String
+  amount Float
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  keywords Keyword[] // Create a many-to-many relationship with Keyword
+}
+
+model Keyword {
+  id         Int       @id @default(autoincrement())
+  name       String    @unique
+  categories Category[] // Create a many-to-many relationship with Category
+}
+
+model Exclude {
+  id         Int       @id @default(autoincrement())
+  name       String    @unique
+}
