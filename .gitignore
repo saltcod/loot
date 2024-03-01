@@ -38,4 +38,4 @@ next-env.d.ts
 
 dev.db
 dev.db-journal
-public/data
+public/data/2023.csv
