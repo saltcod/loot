@@ -1,19 +1,10 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Categories` table. If the table is not empty, all the data it contains will be lost.
-  - You are about to drop the `CategoriesLookup` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-PRAGMA foreign_keys=off;
-DROP TABLE "Categories";
-PRAGMA foreign_keys=on;
-
--- DropTable
-PRAGMA foreign_keys=off;
-DROP TABLE "CategoriesLookup";
-PRAGMA foreign_keys=on;
+-- CreateTable
+CREATE TABLE "Transactions" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "date" DATETIME NOT NULL,
+    "name" TEXT NOT NULL,
+    "amount" REAL NOT NULL
+);
 
 -- CreateTable
 CREATE TABLE "Category" (
@@ -28,7 +19,7 @@ CREATE TABLE "Keyword" (
 );
 
 -- CreateTable
-CREATE TABLE "ExcludeList" (
+CREATE TABLE "Exclude" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL
 );
@@ -48,7 +39,7 @@ CREATE UNIQUE INDEX "Category_name_key" ON "Category"("name");
 CREATE UNIQUE INDEX "Keyword_name_key" ON "Keyword"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "ExcludeList_name_key" ON "ExcludeList"("name");
+CREATE UNIQUE INDEX "Exclude_name_key" ON "Exclude"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_CategoryToKeyword_AB_unique" ON "_CategoryToKeyword"("A", "B");
